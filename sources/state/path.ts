@@ -11,6 +11,7 @@ import {
   type SlimByTypeNameRow,
 } from "./catalog.ts";
 import { variantToFilename, es6DynamicTemplate } from "../utils/helpers.ts";
+import { getAssetUrl } from "../utils/url.ts";
 import { debugLog } from "../utils/debug.ts";
 import type { Selections } from "./state.ts";
 import type { AnimationEntry } from "./filters.ts";
@@ -165,7 +166,7 @@ export function getSpritePath(
   // `variant` is guaranteed non-null when `!recolors` here: if both inputs
   // were falsy the block above derived `variant` from the itemId.
   const fileName = !recolors ? `/${pathDeps.variantToFilename(variant!)}` : "";
-  return ok(`spritesheets/${basePath}${animName}${fileName}.png`);
+  return ok(getAssetUrl(`spritesheets/${basePath}${animName}${fileName}.png`));
 }
 
 /** Replace `${typeName}` placeholders in a path using the current selections. */

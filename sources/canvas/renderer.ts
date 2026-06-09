@@ -9,6 +9,7 @@ import { getImageToDraw } from "./palette-recolor.ts";
 import { getMultiRecolors } from "../state/palettes.ts";
 import { get2DContext, getZPos } from "./canvas-utils.ts";
 import { variantToFilename } from "../utils/helpers.ts";
+import { getAssetUrl } from "../utils/url.ts";
 import { drawFramesToCustomAnimation } from "./draw-frames.ts";
 import {
   FRAME_SIZE,
@@ -288,9 +289,9 @@ async function runRenderCharacter(
           }
 
           // Custom animations use direct file path
-          const spritePath = `spritesheets/${basePath}${variantToFilename(
-            variant ?? "",
-          )}.png`;
+          const spritePath = getAssetUrl(
+            `spritesheets/${basePath}${variantToFilename(variant ?? "")}.png`,
+          );
 
           customAnimationItems.push({
             itemId,
@@ -711,9 +712,9 @@ export async function renderSingleItem(
         const basePath = layer[bodyType] as string | undefined;
         if (!basePath) continue;
 
-        const spritePath = `spritesheets/${basePath}${variantToFilename(
-          variant ?? "",
-        )}.png`;
+        const spritePath = getAssetUrl(
+          `spritesheets/${basePath}${variantToFilename(variant ?? "")}.png`,
+        );
 
         customSprites.push({ spritePath, zPos: animLayer.zPos, yPos });
       }

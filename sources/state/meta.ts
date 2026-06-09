@@ -1,5 +1,6 @@
 import { ok, type Result } from "neverthrow";
 import { variantToFilename } from "../utils/helpers.ts";
+import { getAssetUrl } from "../utils/url.ts";
 import { replaceInPath } from "./path.ts";
 import {
   type CatalogReader,
@@ -153,12 +154,14 @@ export function getLayersToLoad(
       if (!variantFileName) {
         continue;
       }
-      imagePath = `spritesheets/${layerPath}${variantFileName}.png`;
+      imagePath = getAssetUrl(`spritesheets/${layerPath}${variantFileName}.png`);
     } else {
       const defaultAnim = meta.animations.includes("walk")
         ? "walk"
         : meta.animations[0];
-      imagePath = `spritesheets/${layerPath}${defaultAnim}${variantFileName ? `/${variantFileName}` : ""}.png`;
+      imagePath = getAssetUrl(
+        `spritesheets/${layerPath}${defaultAnim}${variantFileName ? `/${variantFileName}` : ""}.png`,
+      );
     }
 
     layersToLoad.push({

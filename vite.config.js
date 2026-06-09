@@ -66,6 +66,11 @@ export default defineConfig(({ command }) => ({
       sass: { quietDeps: true },
     },
   },
+  server: {
+    watch: {
+      ignored: ["**/spritesheets/**"],
+    },
+  },
   plugins: [
     vitePluginPreviewServeDistSpritesheets(),
     ...itemMetadataPlugins(command),
