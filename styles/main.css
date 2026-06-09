@@ -5,8 +5,8 @@ html {
 }
 
 body {
-  height: calc(100dvh - 12px);
-  overflow-y: hidden;
+  min-height: 100dvh;
+  overflow-y: auto;
   font-family: monospace;
   font-size: 16px;
   line-height: 24px;
@@ -14,6 +14,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+}
+
+@media (min-width: 1024px) {
+  body {
+    height: calc(100dvh - 12px);
+    overflow-y: hidden;
+  }
 }
 
 .variant-display-name,
@@ -44,18 +51,30 @@ p {
 }
 
 .sticky {
-  position: sticky;
-  top: 0;
   opacity: 1;
   background-color: white;
   z-index: 100;
 }
 
+@media (min-width: 1024px) {
+  .sticky {
+    position: sticky;
+    top: 0;
+  }
+}
+
 #header-left {
-  width: calc(100% - 30px);
-  padding: 10px;
+  width: 100%;
+  padding: 1rem;
   box-sizing: border-box;
-  min-height: 75px;
+}
+
+@media (min-width: 1024px) {
+  #header-left {
+    width: calc(100% - 30px);
+    padding: 10px;
+    min-height: 75px;
+  }
 }
 
 #columns-container {
@@ -65,19 +84,34 @@ p {
   box-sizing: border-box;
   flex: 1;
   margin-top: 0;
-  overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+  #columns-container {
+    overflow-y: auto;
+  }
 }
 
 #chooser-column {
   padding: 1rem;
-  overflow-y: auto;
   scroll-behavior: smooth;
   scroll-padding-top: 12px;
 }
 
+@media (min-width: 1024px) {
+  #chooser-column {
+    overflow-y: auto;
+  }
+}
+
 #preview-column {
   padding: 1rem;
-  overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+  #preview-column {
+    overflow-y: auto;
+  }
 }
 
 #credits-section > .collapsible-content > .content {
@@ -161,8 +195,14 @@ canvas {
 }
 
 .subtitle {
-  padding-left: 50px;
+  padding-left: 0;
   margin-top: 4px;
+}
+
+@media (min-width: 1024px) {
+  .subtitle {
+    padding-left: 50px;
+  }
 }
 
 .collapsible-header {
@@ -245,11 +285,20 @@ canvas {
 
 #sponsors-links {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 1rem;
-  margin-top: -12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  #sponsors-links {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    margin-top: -12px;
+  }
 }
 
 .is-not-compatible.is-clickable {
